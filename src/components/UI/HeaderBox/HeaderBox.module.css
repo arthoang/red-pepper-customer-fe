@@ -1,0 +1,49 @@
+.HeaderBox {
+    height: 40vh;
+    width: 100%;
+    display: block;
+    position: relative;  
+}
+
+.FlexContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translateY(-50%) translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Title {
+    color: #ffffff;
+    font-family: 'Roboto Condensed';
+    font-weight: 400;
+    font-size: xx-large;
+    letter-spacing: 0.3em;
+}
+
+.Caption {
+    color: #d40000;
+    width: 100%;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: small;
+    letter-spacing: 0.2em;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.CaptionText {
+    width: 40%;
+}
+
+.Line {
+    width: 30%;
+    background-color: rgba(255,255,255,0.5);
+    height: 1px;    
+}

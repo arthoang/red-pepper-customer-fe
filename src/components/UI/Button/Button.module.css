@@ -1,0 +1,55 @@
+.Button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Montserrat';
+    padding: 10px 30px;
+    margin: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+    letter-spacing: 0.1em;
+}
+
+.ButtonMenu {
+    border: 2px solid #6e6e6e;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.ButtonMenuActive {
+    border: 2px solid #d40000;
+    background-color: #000000;
+    color: #d40000;
+}
+
+.ButtonForm {
+    border-radius: 50px;
+    color: #ffffff;
+    background-color: #d40000;
+}
+
+.ButtonForm:hover {
+    background-color: transparent;
+}
+
+.ButtonFormSmall {
+    padding: 5px 10px;
+    margin: 5px;
+    font-weight: lighter;
+    font-size: smaller;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: #d40000;
+}
+
+.ButtonFormSmall:hover {
+    background-color: transparent;
+}
+
+.ButtonFormSmall:active {
+    color: #d40000;
+}
+
+.Button:focus {
+    outline:0 !important;
+}

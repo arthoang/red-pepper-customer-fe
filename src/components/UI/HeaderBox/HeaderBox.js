@@ -1,0 +1,33 @@
+import React from 'react';
+import MenuImg from '../../../assets/images/menu.jpg';
+import classes from './HeaderBox.module.css';
+
+const HeaderBox  = (props) => {
+    let bgImg="";
+    if (props.link==="menu") {
+        bgImg=MenuImg;
+    }
+    const style = {
+        backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('+bgImg+')',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    }
+    return (
+        <React.Fragment>
+            <div className={classes.HeaderBox} style={style}>
+                <div className={classes.FlexContainer}>
+                    <div className={classes.Title} >{props.title}</div>
+                    <div className={classes.Caption}>
+                        <div className={classes.Line}/>
+                        <div className={classes.CaptionText}>{props.caption}</div>
+                        <div className={classes.Line}/>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </React.Fragment>
+    )
+}
+
+export default HeaderBox;

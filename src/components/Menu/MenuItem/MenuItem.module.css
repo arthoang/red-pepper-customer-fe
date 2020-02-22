@@ -1,0 +1,69 @@
+.MenuItem {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.Image {
+    max-width: 20%;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.DescriptionContainer {
+    width: 80%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.TitleRowContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.Title {
+    font-family: 'Lato';
+    font-weight: 600;
+    font-size: larger;
+}
+
+.Price {
+    color: #d40000;
+    font-family: 'Lato';
+    font-weight: 600;
+    font-size: larger;
+    max-width: 10%;
+}
+
+.Description {
+    padding-top: 0.3em;
+    font-family: 'Roboto';
+    font-weight: lighter;
+    font-style: italic;
+    font-size: small;
+    color: #787878;
+    line-height: 1.5em;
+}
+
+.Spacer {
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.7) 36.36%, 
+                rgba(0,0,0,0.5) 36.36%, rgba(0,0,0,0.5) 50%, 
+                rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.7) 86.36%, 
+                rgba(0,0,0,0.5) 86.36%, rgba(0,0,0,0.5) 100%);
+    background-size: 22.00px 22.00px;
+    flex: 1 1 auto;
+    height: .8px;
+    align-self: flex-end;
+}
+
+.OrderControls {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+}

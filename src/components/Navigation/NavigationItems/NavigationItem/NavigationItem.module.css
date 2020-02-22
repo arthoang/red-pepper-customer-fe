@@ -1,0 +1,55 @@
+.ItemContainer {
+    margin: 10px 0;
+    position: relative
+}
+
+.NavLink {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    box-sizing: border-box;
+    width: 100%;
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.NavLink:hover {
+    color: #d40000;
+}
+
+.NavLinkActive {
+    color: #d40000;
+}
+
+
+@media (min-width: 500px) {
+    .NavigationItem {
+        margin: 0;
+        display: flex;
+        height: 100%;
+        width: auto;
+        align-items: center;
+    }
+    
+    .NavLink {
+        color: #ffffff;
+        height: 100%;
+        padding: 16px 10px;
+        border-bottom: 4px solid transparent;
+    }
+
+    .NavLink:hover {
+        color: #d40000;
+    }
+
+    .NavLinkActive {
+        color: #d40000;
+    }
+
+    .NavLinkActive:hover {
+        color: #d40000;
+    }
+}
