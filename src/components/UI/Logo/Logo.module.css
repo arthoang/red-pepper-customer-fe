@@ -7,8 +7,7 @@
 }
 
 @media (max-width: 250px) {
-    .Logo img {
-        width: 100%;
-        height: auto;
+    .Logo img {    
+        height: 100%;
     }
   }

@@ -46,7 +46,7 @@ class MenuListing extends Component {
                             if (Object.keys(col).length !== 0) {
                                 // valid column
                                 return (
-                                    <Col key={col.dishId}>
+                                    <Col lg={true} key={col.dishId}>
                                         <MenuItem 
                                             imageSrc={col.image}
                                             title={col.dish}

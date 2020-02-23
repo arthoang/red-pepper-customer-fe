@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classes from './NavigationItems.module.css';
 import NavigationItem from './NavigationItem/NavigationItem';
-import CartImage from '../../../assets/images/shopping_cart_white.png';
 //redux
 import { connect } from 'react-redux';
 
@@ -21,7 +20,10 @@ class NavigationItems extends Component {
         }
     
         let cart = (
-            <NavigationItem link="/cart" ><img className={classes.Image} src={CartImage} alt="cart"/></NavigationItem>
+            <NavigationItem link="/cart" type="cart">
+                {/* <img className={classes.Image} src={CartImage} alt="cart"/> */}
+                {/* <div className={classes.Cart}></div> */}
+            </NavigationItem>
         );
         
         if (this.props.currentOrderItems.length > 0) {
@@ -29,8 +31,9 @@ class NavigationItems extends Component {
                 link="/cart"
                 badgeEnabled='true'
                 badgeAmount={this.props.currentOrderItems.length}
+                type="cart"
             >
-                    <img className={classes.Image} src={CartImage} alt="cart"/>
+                    {/* <div className={classes.Cart}></div> */}
             </NavigationItem>
         }
     

@@ -1,6 +1,6 @@
 .ItemContainer {
     margin: 10px 0;
-    position: relative
+    position: relative;
 }
 
 .NavLink {
@@ -10,10 +10,28 @@
     box-sizing: border-box;
     width: 100%;
     color: #ffffff;
-    text-decoration: none;
-    width: 100%;
     box-sizing: border-box;
     transition: 0.3s;
+}
+
+.Cart {
+    content: "";
+    height: 18px;
+    width: 18px;
+    background-position: center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url('../../../../assets/images/shopping_cart_white.png');
+}
+
+.CartActive {
+    content: "";
+    height: 18px;
+    width: 18px;
+    background-position: center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url('../../../../assets/images/shopping_cart_red.png');
 }
 
 .NavLink:hover {
@@ -26,19 +44,10 @@
 
 
 @media (min-width: 500px) {
-    .NavigationItem {
-        margin: 0;
-        display: flex;
-        height: 100%;
-        width: auto;
-        align-items: center;
-    }
     
     .NavLink {
         color: #ffffff;
-        height: 100%;
         padding: 16px 10px;
-        border-bottom: 4px solid transparent;
     }
 
     .NavLink:hover {

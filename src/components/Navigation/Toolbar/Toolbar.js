@@ -6,13 +6,15 @@ import SideDrawerToggler from '../SideDrawerToggler/SideDrawerToggler';
 
 const Toolbar = (props) => {
     let desktopClasses = [classes.DesktopOnly];
+    let toolbarClasses = [classes.Toolbar];
     if (props.scrolled) {
-        desktopClasses.push(classes.Scrolled);
+        //desktopClasses.push(classes.Scrolled);
+        toolbarClasses.push(classes.Scrolled);
     }
 
     return (
         <div>
-            <header className={classes.Toolbar}>
+            <header className={toolbarClasses.join(' ')}>
                 {/* Side Drawer */}
                 <SideDrawerToggler open={props.togglerClicked}/>
                 
