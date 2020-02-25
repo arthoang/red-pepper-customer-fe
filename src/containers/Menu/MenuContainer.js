@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import classes from './MenuContainer.module.css';
 import HeaderBox from '../../components/UI/HeaderBox/HeaderBox';
 import MenuControls from '../../components/Menu/MenuControls/MenuControls';
 import MenuListing from '../../components/Menu/MenuListing/MenuListing';
+import Button from '../../components/UI/Button/Button';
+import AddDialog from '../../components/Order/AddDialog/AddDialog';
+import BSModal from '../../components/UI/BSModal/BSModal';
+
+//Modal
+import Modal from 'react-bootstrap/Modal';
 
 //redux
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
+
 class MenuContainer extends Component {
     state = {
+        showModal: false,
+        selectedDish: {},
         category: 'mains',
         categories: {
             appetizers: {
@@ -142,16 +152,31 @@ class MenuContainer extends Component {
         }
     }
 
+    handleShowModal = () => {
+        this.setState({showModal: true});
+    }
+
+    handleCloseModal = () => {
+        this.setState({showModal: false});
+    }
+
     handleCategoryChanged = (category) => {
         this.setState({category: category});
     }
 
     handleAddToOrder = (item) => {
+        this.setState({selectedDish: item});
+        this.handleShowModal();
+        // this.props.addItemToOrder(item);
+    }
+
+    processAddToOrder = (values) => {
         console.log("Add item to order");
-        this.props.addItemToOrder(item);
+        console.log(values);
     }
 
     render() {
+        
         return (
             <React.Fragment>
                 {/* Header box */}
@@ -172,6 +197,22 @@ class MenuContainer extends Component {
                     dishes={this.state.menu[this.state.category]}
                     add={this.handleAddToOrder}
                 />
+
+                {/* Modal for AddDialog */}
+                <BSModal
+                    show={this.state.showModal} 
+                    onHide={this.handleCloseModal}                    
+                    classNames="Modal"
+                    centered
+                    title={this.state.selectedDish.dish}
+                >
+                    <AddDialog 
+                        data={this.state.selectedDish}
+                        btnType="ButtonFormSmall"
+                        btnAction={this.processAddToOrder}
+                        btnLabel="Add to order"
+                    />
+                </BSModal>
 
             </React.Fragment>
         );
