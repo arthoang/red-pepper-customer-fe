@@ -18,7 +18,6 @@ const BSModal = (props) => {
             onHide={props.onHide}
             centered={isCentered}
             dialogClassName={classNames}
-            
         >
             <Modal.Header closeButton>
                 <span className={classes.ModalTitle}>{props.title}</span>

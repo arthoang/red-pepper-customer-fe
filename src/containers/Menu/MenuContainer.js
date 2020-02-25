@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import classes from './MenuContainer.module.css';
 import HeaderBox from '../../components/UI/HeaderBox/HeaderBox';
 import MenuControls from '../../components/Menu/MenuControls/MenuControls';
 import MenuListing from '../../components/Menu/MenuListing/MenuListing';
-import Button from '../../components/UI/Button/Button';
 import AddDialog from '../../components/Order/AddDialog/AddDialog';
 import BSModal from '../../components/UI/BSModal/BSModal';
 
-//Modal
-import Modal from 'react-bootstrap/Modal';
 
 //redux
 import { connect } from 'react-redux';
@@ -167,12 +163,17 @@ class MenuContainer extends Component {
     handleAddToOrder = (item) => {
         this.setState({selectedDish: item});
         this.handleShowModal();
-        // this.props.addItemToOrder(item);
+        
     }
 
     processAddToOrder = (values) => {
-        console.log("Add item to order");
-        console.log(values);
+        let item = {...this.state.selectedDish};
+        for (let key in values) {
+            item[key] = values[key];
+        }
+        this.props.addItemToOrder(item);
+        // close modal and complete the process
+        this.handleCloseModal();
     }
 
     render() {

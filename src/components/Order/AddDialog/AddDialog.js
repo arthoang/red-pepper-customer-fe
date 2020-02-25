@@ -19,18 +19,6 @@ class AddDialog extends Component {
                 inputType: 'textarea',
                 placeholder: 'Let us know if you have any special request for the dish',
             }, 
-            // email: {
-            //     elementLabel: 'email:',
-            //     elementType: 'input',
-            //     inputType: 'email',
-            //     placeholder: 'Let us know if you have any special request for the dish',
-            // }, 
-            // password: {
-            //     elementLabel: 'password:',
-            //     elementType: 'input',
-            //     inputType: 'password',
-            //     placeholder: 'Let us know if you have any special request for the dish',
-            // }, 
         },
         initialValues: {
             portions: 1
