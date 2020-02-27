@@ -1,0 +1,32 @@
+.NoItem {
+    padding-top: 30px;
+    height: 150px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-family: 'Roboto';
+    font-size: medium;
+    text-decoration: none;
+}
+
+.PlaceOrderButton {
+    width: 70%;
+}
+
+.NavLink {
+    font-family: 'Roboto';
+    font-weight: 700;
+    box-sizing: border-box;
+    width: 100%;
+    color: #d40000;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.NavLink:hover {
+    color: #28963C;
+}
+
+.NavLinkActive {
+    color: #28963C;
+}

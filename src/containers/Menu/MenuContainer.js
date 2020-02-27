@@ -228,7 +228,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addItemToOrder: (item) => dispatch(actions.addToOrder(item)),
+        addItemToOrder: (item) => dispatch(actions.processAddToOrder(item)),
+        // calculateAmounts: () => dispatch(actions.calculateAmounts()),
     };
 };
 

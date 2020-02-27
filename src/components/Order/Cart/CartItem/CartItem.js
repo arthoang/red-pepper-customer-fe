@@ -13,14 +13,14 @@ const CartItem = (props) => {
                 <Media.Body>
                     <div className={classes.Title}>{props.item.dish}</div>
                     <ItemInfo
-                        info={props.item.notes}
+                        item={props.item}
                         removeAll={props.removeAll}
                     />
                     <ItemControls
                         price={props.item.price}
                         quantity={props.item.quantity}
-                        removeOne={props.removeOne}
-                        addOne={props.addOne}
+                        removeOne={() => props.removeOne(props.item)}
+                        addOne={() => props.addOne(props.item)}
                     />
                 </Media.Body>
             </Media>

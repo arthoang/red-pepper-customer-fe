@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
-import Media from 'react-bootstrap/Media';
 import classes from './CartListing.module.css';
-import { NavLink } from 'react-router-dom';
 import CartItem from '../CartItem/CartItem';
 
 class CartListing extends Component {
@@ -13,15 +11,7 @@ class CartListing extends Component {
 // price: 8
 // description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
 // portions: 2
-        let ui = (
-            <div className={classes.NoItem}>
-                There is no item in the cart. Please proceed to our &nbsp;
-                <NavLink className={classes.NavLink} to="/menu" activeClassName={classes.NavLinkActive}>
-                    MENU
-                </NavLink>                
-                &nbsp; to begin ordering.
-            </div>
-        );
+        let ui = "";
         let listing = "";
         if (this.props.items && this.props.items.length > 0) {
             // list items

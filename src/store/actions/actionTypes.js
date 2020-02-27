@@ -2,7 +2,7 @@
 export const ADD_TO_ORDER = 'ADD_TO_ORDER';
 export const REMOVE_FROM_ORDER = 'REMOVE_FROM_ORDER';
 export const CLEAR_CART = 'CLEAR_CART';
-
+export const CALC_AMOUNTS = 'CALC_AMOUNTS';
 
 //Authentication actions
 export const AUTH_START = 'AUTH_START'

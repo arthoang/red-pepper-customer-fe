@@ -74,3 +74,30 @@
 .ButtonQuantity:active {
     color: #ffffff;
 }
+
+.ButtonQuantity:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.ButtonLong {
+    color: #fff;
+    font-size: large;
+    background-color: #28963C;
+    border-radius: 50px;
+    letter-spacing: 0.3em;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 10px 0px;
+}
+
+.ButtonLong:hover {
+    font-weight: 700;
+    color: #d40000;
+}
+
+.ButtonLong:active {
+    font-weight: 400;
+    color: #d40000;
+}
