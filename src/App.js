@@ -4,6 +4,7 @@ import { Switch, Route, withRouter  } from 'react-router-dom';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Menu from './containers/Menu/MenuContainer';
+import Cart from './containers/Cart/CartContainer';
 
 import { connect } from 'react-redux';
 // import Button from './components/UI/Button/Button';
@@ -23,7 +24,7 @@ class App extends Component {
               <Route path='/login' component={Auth} />
               <Route path='/logout' component={Logout} />
               <Route path='/menu' component={Menu} />
-
+              <Route path='/cart' component={Cart} />
               
             </Switch>
             

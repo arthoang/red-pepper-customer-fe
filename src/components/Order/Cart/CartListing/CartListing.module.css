@@ -1,0 +1,43 @@
+.Hr {
+    border-top: 1px dashed #2b2b2b;
+}
+
+.CartListing {
+    margin-top: 30px;
+    width: 40%;
+    text-align: left;
+    color: #fff;
+    background-color: #fcfcfc;
+    border: 1px solid #666666;
+    border-radius: 5px;
+}
+
+.NoItem {
+    padding-top: 30px;
+    height: 150px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-family: 'Roboto';
+    font-size: medium;
+    text-decoration: none;
+}
+
+
+.NavLink {
+    font-family: 'Roboto';
+    font-weight: 700;
+    box-sizing: border-box;
+    width: 100%;
+    color: #d40000;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.NavLink:hover {
+    color: #28963C;
+}
+
+.NavLinkActive {
+    color: #28963C;
+}

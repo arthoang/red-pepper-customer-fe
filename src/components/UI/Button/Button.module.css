@@ -43,6 +43,7 @@
 }
 
 .ButtonFormSmall:hover {
+    color: #28963C;
     background-color: transparent;
 }
 
@@ -52,4 +53,24 @@
 
 .Button:focus {
     outline:0 !important;
+}
+
+.ButtonQuantity {
+    background-color: #000000;    
+    color: #d9d9d9;
+    font-weight: 400;
+    width: 20px;
+    height: 20px;
+    padding: 0px 0px 6px 0px;
+    margin: 0px 0px;
+    text-align: center;
+}
+
+.ButtonQuantity:hover {
+    font-weight: 700;
+    color: #fff;
+}
+
+.ButtonQuantity:active {
+    color: #ffffff;
 }

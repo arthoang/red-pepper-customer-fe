@@ -8,8 +8,33 @@ const initialState = {
 };
 
 const addToOrder = (state, action) => {
+    const newItem = action.item;
+    const newCurrentOrderItems = [...state.currentOrderItems];
+    // check if there is existing order item
+    let existingItems = newCurrentOrderItems.filter((item,idx) => {
+        if (item.dishId ===newItem.dishId && item.notes === newItem.notes) {
+            return {
+                idx: item
+            }
+        }
+    });
     
-    const newCurrentOrderItems = [...state.currentOrderItems, action.item];
+    // if exist, remove the item from array, update quantity, and push in again
+    if (existingItems.length===1) {
+        let existingItem = existingItems[0];
+        existingItem.quantity = existingItem.quantity + newItem.quantity;
+        // remove
+        for (let key in existingItems) {
+            newCurrentOrderItems.splice(key, 1);
+        }
+        // push
+        newCurrentOrderItems.push(existingItem);
+        
+    } else {
+        // if not exist, push new item in
+        newCurrentOrderItems.push(newItem);
+    }
+    
     return updateObject(state, {currentOrderItems: newCurrentOrderItems});
 }
 

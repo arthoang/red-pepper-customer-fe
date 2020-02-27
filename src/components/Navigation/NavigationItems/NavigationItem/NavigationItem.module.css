@@ -10,8 +10,8 @@
     box-sizing: border-box;
     width: 100%;
     color: #ffffff;
-    box-sizing: border-box;
     transition: 0.3s;
+    text-decoration: none;
 }
 
 .Cart {
@@ -48,6 +48,7 @@
     .NavLink {
         color: #ffffff;
         padding: 16px 10px;
+        text-decoration: none;
     }
 
     .NavLink:hover {

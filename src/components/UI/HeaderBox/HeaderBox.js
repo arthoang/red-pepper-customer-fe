@@ -1,11 +1,14 @@
 import React from 'react';
 import MenuImg from '../../../assets/images/menu.jpg';
+import CartImg from '../../../assets/images/cart.jpg';
 import classes from './HeaderBox.module.css';
 
 const HeaderBox  = (props) => {
     let bgImg="";
     if (props.link==="menu") {
         bgImg=MenuImg;
+    } else if (props.link==="cart") {
+        bgImg=CartImg;
     }
     const style = {
         backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('+bgImg+')',

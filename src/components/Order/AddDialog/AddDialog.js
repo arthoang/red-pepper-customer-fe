@@ -6,11 +6,11 @@ import * as yup from 'yup';
 class AddDialog extends Component {
     state = {
         formElements: {
-            portions: {
-                elementLabel: 'How many portions:',
+            quantity: {
+                elementLabel: 'Quantity:',
                 elementType: 'input',
                 inputType: 'number',
-                placeholder: 'please input the portions in number',
+                placeholder: 'please input the quantity in number',
                 
             },
             notes: {
@@ -21,10 +21,10 @@ class AddDialog extends Component {
             }, 
         },
         initialValues: {
-            portions: 1
+            quantity: 1
         },
         validationSchema: yup.object({
-            portions: yup.number().min(1)
+            quantity: yup.number().min(1)
         })
         // validationSchema: yup.object({})
     }

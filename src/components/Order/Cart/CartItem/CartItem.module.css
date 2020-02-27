@@ -1,0 +1,27 @@
+.CartItem {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.Image {
+    margin-right: 30px;
+    max-width: 20%;
+    height: 60px;
+    border-radius: 50px;
+    align-self: center;
+}
+
+.Title {
+    
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: medium;
+    color: #d40000;
+}
+
+.Text {
+    font-family: "Roboto";
+    font-size: small;
+    color: #28963C;
+}
