@@ -7,6 +7,7 @@ import Button from '../../components/UI/Button/Button';
 import BSModal from '../../components/UI/BSModal/BSModal';
 import CartListing from '../../components/Order/Cart/CartListing/CartListing';
 import CartTotal from '../../components/Order/Cart/CartTotal/CartTotal';
+import CustomerInfo from '../../components/Order/Checkout/CustomerInfo/CustomerInfo';
 
 
 //redux
@@ -14,6 +15,10 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
 class CartContainer extends Component {
+    state = {
+        showModal: false,
+    }
+
     handleAddOne = (item) => {
         let newItem = {...item};
         newItem.quantity = 1;
@@ -32,6 +37,54 @@ class CartContainer extends Component {
 
     handlePlaceOrder = () => {
         console.log("Handle place order!");
+        this.handleShowModal();
+    }
+
+    handleCheckout = (values) => {
+        console.log("Checkout!");
+        console.log(values);
+        //save customer
+        let customer = {};
+        for(let key in values) {
+            customer[key] = values[key];
+        }
+        this.props.saveCustomerInfo(customer);
+
+        //generate order id
+        this.props.generateOrderNumber();
+
+        //generate data
+        let data = {
+            customer: this.props.customer,
+            orderId: this.props.newOrderId,
+            paymentStatus: this.props.paymentStatus,
+            paymentMethod: this.props.paymentMethod,
+            items: this.props.currentOrderItems,
+            gst: this.props.currentOrderGST,
+            pst: this.props.currentOrderPST,
+            subTotal: this.props.currentOrderSubTotal,
+            total: this.props.currentOrderTotal,
+        };
+
+        console.log("Data to send:");
+        console.log(data);
+        
+        //send data to firebase
+
+        //close Modal
+        this.handleCloseModal();
+    }
+
+    handleShowModal = () => {
+        this.setState({
+            showModal: true,
+        })
+    }
+
+    handleCloseModal = () => {
+        this.setState({
+            showModal: false,
+        })
     }
 
     render() {
@@ -83,6 +136,20 @@ class CartContainer extends Component {
                         </Button>
                     </Container>
 
+                    {/* Customer Info Modal */}
+                    <BSModal
+                        show={this.state.showModal} 
+                        onHide={this.handleCloseModal}                    
+                        classNames="Modal"
+                        centered
+                        title="CONTACT INFORMATION"
+                    >
+                        <CustomerInfo 
+                            btnType="ButtonFormSmall"
+                            btnAction={this.handleCheckout}
+                            btnLabel="Add to order"
+                        />
+                    </BSModal>
                     
                 </React.Fragment>
             );
@@ -100,6 +167,10 @@ const mapStateToProps = state => {
         currentOrderPST: state.order.currentOrderPST,
         currentOrderSubTotal: state.order.currentOrderTotalBeforeTaxes,
         currentOrderTotal: state.order.currentOrderTotalAfterTaxes,
+        paymentStatus: state.order.paymentStatus,
+        paymentMethod: state.order.paymentMethod,
+        customer: state.order.customer,
+        newOrderId: state.order.newOrderId,
     };
 }
 
@@ -107,7 +178,9 @@ const mapDispatchToProps = dispatch => {
     return {
         addItemToOrder: (item) => dispatch(actions.processAddToOrder(item)),
         removeItemFromOrder: (item) => dispatch(actions.processRemoveFromOrder(item)),
-        // calculateAmounts: () => dispatch(actions.calculateAmounts()),
+        generateOrderNumber: () => dispatch(actions.generateOrderId()),
+        saveCustomerInfo: (customer) => dispatch(actions.processSaveCustomerInfo(customer)),
+        
     };
 };
 

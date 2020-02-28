@@ -8,7 +8,10 @@ const initialState = {
     currentOrderPST: 0,
     currentOrderTotalBeforeTaxes: 0,
     currentOrderTotalAfterTaxes: 0,
-    currentOrderNumber: null,
+    paymentStatus: "Paid",
+    paymentMethod: "Visa",
+    customer: null,
+    newOrderId: "",
 };
 
 const addToOrder = (state, action) => {
@@ -73,12 +76,21 @@ const calculateAmounts = (state, action) => {
     });
 }
 
+const saveCustomerInfo = (state, action) => {
+    return updateObject(state, {customer: action.customer});
+}
+
+const saveOrderId = (state, action) => {
+    return updateObject(state, {newOrderId: action.orderId});
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_ORDER: return addToOrder(state, action);
         case actionTypes.REMOVE_FROM_ORDER: return removeFromOrder(state, action);
         case actionTypes.CALC_AMOUNTS: return calculateAmounts(state, action);
+        case actionTypes.SAVE_CUSTOMER_INFO: return saveCustomerInfo(state, action);
+        case actionTypes.SAVE_ORDER_ID: return saveOrderId(state, action);
         default: return state;
     }
 };

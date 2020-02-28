@@ -18,6 +18,15 @@ import thunk from 'redux-thunk';
 import orderReducer from './store/reducers/OrderReducer';
 import authReducer from './store/reducers/AuthReducer';
 
+//firebase
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebaseConfig from './firebase.config';
+
+// firebase.initializeApp(firebaseConfig);
+
+// export const AuthContext = React.createContext(null);
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers(

@@ -1,7 +1,8 @@
 export {
     processAddToOrder,
     processRemoveFromOrder,
-    
+    processSaveCustomerInfo,
+    generateOrderId,
 } from './order';
 
 export {
