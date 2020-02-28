@@ -5,6 +5,7 @@ import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Menu from './containers/Menu/MenuContainer';
 import Cart from './containers/Cart/CartContainer';
+import * as ROUTES from './constants/routes';
 
 import { connect } from 'react-redux';
 // import Button from './components/UI/Button/Button';
@@ -21,10 +22,10 @@ class App extends Component {
         
           <Layout>
             <Switch>
-              <Route path='/login' component={Auth} />
-              <Route path='/logout' component={Logout} />
-              <Route path='/menu' component={Menu} />
-              <Route path='/cart' component={Cart} />
+              <Route path={ROUTES.SIGN_IN} component={Auth} />
+              <Route path={ROUTES.SIGN_OUT} component={Logout} />
+              <Route path={ROUTES.MENU} component={Menu} />
+              <Route path={ROUTES.CART} component={Cart} />
               
             </Switch>
             

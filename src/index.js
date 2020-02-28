@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//firebase
+import Firebase, { FirebaseContext } from './components/Firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
 //router
 import { BrowserRouter } from "react-router-dom";
 
@@ -18,10 +22,8 @@ import thunk from 'redux-thunk';
 import orderReducer from './store/reducers/OrderReducer';
 import authReducer from './store/reducers/AuthReducer';
 
-//firebase
-import firebase from 'firebase';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebaseConfig from './firebase.config';
+
+
 
 // firebase.initializeApp(firebaseConfig);
 
@@ -38,12 +40,20 @@ const rootReducer = combineReducers(
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
+// const app = (
+//   <Provider store={store}>
+//     <BrowserRouter>
+//       <App />
+//     </BrowserRouter>
+//   </Provider>
+// );
+
 const app = (
-  <Provider store={store}>
+  <FirebaseContext.Provider value={new Firebase()} store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>
+  </FirebaseContext.Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));
