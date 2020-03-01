@@ -1,5 +1,7 @@
 import * as actionTypes from './actionTypes';
 //import axios from '../../axios-rp';
+// import { firestore } from '../../components/Firebase/Firebase';
+import firebase from '../../components/Firebase/Firebase';
 
 //cart actions
 export const addToOrder = (item) => {
@@ -66,5 +68,64 @@ export const generateOrderId = () => {
     const orderId = "" + now.getFullYear() + "" + now.getUTCMonth() + "-" + rand;
     return dispatch => {
         dispatch(saveOrderId(orderId));
+    }
+}
+
+//firebase
+export const fetchAllOrders = (data) => {
+    return {
+        type: actionTypes.FETCH_ALL_ORDERS,
+        orders: data,
+    }
+}
+// submit order
+export const submitOrderStart = () => {
+    return {
+        type: actionTypes.SUBMIT_ORDER_START,
+    }
+}
+
+export const submitOrderSuccess = () => {
+    return {
+        type: actionTypes.SUBMIT_ORDER_SUCCESS,
+    }
+}
+
+export const submitOrderFailed = (error) => {
+    return {
+        type: actionTypes.SUBMIT_ORDER_FAILED,
+        error: error,
+    }
+}
+
+// fetch order
+export const processFetchAllOrder = () => {
+    let dishesRef = firebase.firestore().collection("dishes");
+    return dispatch => {
+        dishesRef.get()
+        .then(querySnapshot => {
+            let result = [];
+            querySnapshot.forEach(doc => {
+                result.push({
+                    id: doc.id,
+                    data: doc.data(),
+                })
+            })
+            dispatch(fetchAllOrders(result));
+        })
+        .catch(err => {
+            console.log("Error getting documents: " + err);
+        })
+        ;
+    }
+}
+
+export const submitOrder = (order) => {
+    let orderRef = firebase.firestore().collection("orders");
+    return dispatch => {
+        dispatch(submitOrderStart());
+        orderRef.doc().set(order)
+        .then(() => dispatch(submitOrderSuccess()))
+        .catch(error => dispatch(submitOrderFailed(error)));
     }
 }

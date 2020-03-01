@@ -4,6 +4,10 @@ import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import classes from './Auth.module.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
+//firebase
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
+//redux
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/';
 

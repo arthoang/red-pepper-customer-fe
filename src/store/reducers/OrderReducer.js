@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
+
 const initialState = {
     //data
     currentOrderItems: [],
@@ -12,6 +13,10 @@ const initialState = {
     paymentMethod: "Visa",
     customer: null,
     newOrderId: "",
+    orders: null,
+    // UI and error handling
+    saveLoading: false,
+    saveError: null,
 };
 
 const addToOrder = (state, action) => {
@@ -84,6 +89,23 @@ const saveOrderId = (state, action) => {
     return updateObject(state, {newOrderId: action.orderId});
 }
 
+const fetchAllOrders = (state, action) => {
+    return updateObject(state, {orders: action.orders});
+}
+
+//submit order
+const submitOrderStart = (state, action) => {
+    return updateObject(state, {saveLoading: true, saveError: null});
+}
+
+const submitOrderSuccess = (state, action) => {
+    return updateObject(state, {saveLoading: false, saveError: null});
+}
+
+const submitOrderFailed = (state, action) => {
+    return updateObject(state, {saveLoading: false, saveError: action.error});
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_ORDER: return addToOrder(state, action);
@@ -91,6 +113,10 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CALC_AMOUNTS: return calculateAmounts(state, action);
         case actionTypes.SAVE_CUSTOMER_INFO: return saveCustomerInfo(state, action);
         case actionTypes.SAVE_ORDER_ID: return saveOrderId(state, action);
+        case actionTypes.FETCH_ALL_ORDERS: return fetchAllOrders(state, action);
+        case actionTypes.SUBMIT_ORDER_START: return submitOrderStart(state, action);
+        case actionTypes.SUBMIT_ORDER_SUCCESS: return submitOrderSuccess(state, action);
+        case actionTypes.SUBMIT_ORDER_FAILED: return submitOrderFailed(state, action);
         default: return state;
     }
 };

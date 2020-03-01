@@ -4,10 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-//firebase
-import Firebase, { FirebaseContext } from './components/Firebase';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-
 //router
 import { BrowserRouter } from "react-router-dom";
 
@@ -20,6 +16,7 @@ import thunk from 'redux-thunk';
 
 //reducer
 import orderReducer from './store/reducers/OrderReducer';
+import menuReducer from './store/reducers/MenuReducer';
 import authReducer from './store/reducers/AuthReducer';
 
 
@@ -34,27 +31,28 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers(
   {
     order: orderReducer,
-    auth: authReducer
+    menu: menuReducer,
+    auth: authReducer,
   }
 )
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
-// const app = (
-//   <Provider store={store}>
-//     <BrowserRouter>
-//       <App />
-//     </BrowserRouter>
-//   </Provider>
-// );
-
 const app = (
-  <FirebaseContext.Provider value={new Firebase()} store={store}>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </FirebaseContext.Provider>
+  </Provider>
 );
+
+// const app = (
+//   <FirebaseContext.Provider value={new Firebase()} store={store}>
+//     <BrowserRouter>
+//       <App />
+//     </BrowserRouter>
+//   </FirebaseContext.Provider>
+// );
 
 ReactDOM.render(app, document.getElementById('root'));
 

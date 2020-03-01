@@ -1,4 +1,6 @@
-import app from 'firebase/app';
+import * as firebase from 'firebase';
+// import * as database from 'firebase/database';
+// import * as firestore from 'firebase/firestore';
 
 const prodConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -20,10 +22,12 @@ const devConfig = {
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
-class Firebase {
-    constructor() {
-        app.initializeApp(config);
-    }
-}
+firebase.initializeApp(config);
 
-export default Firebase;
+export default firebase;
+
+// export default app;
+
+// export { database, firestore};
+
+// export const rpRef = dbRef.child("redpepper-stoon");

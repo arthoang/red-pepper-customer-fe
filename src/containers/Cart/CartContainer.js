@@ -8,6 +8,7 @@ import BSModal from '../../components/UI/BSModal/BSModal';
 import CartListing from '../../components/Order/Cart/CartListing/CartListing';
 import CartTotal from '../../components/Order/Cart/CartTotal/CartTotal';
 import CustomerInfo from '../../components/Order/Checkout/CustomerInfo/CustomerInfo';
+import { uuid } from 'uuidv4';
 
 
 //redux
@@ -17,6 +18,7 @@ import * as actions from '../../store/actions';
 class CartContainer extends Component {
     state = {
         showModal: false,
+        orderSubmitted: false,
     }
 
     handleAddOne = (item) => {
@@ -37,6 +39,7 @@ class CartContainer extends Component {
 
     handlePlaceOrder = () => {
         console.log("Handle place order!");
+        
         this.handleShowModal();
     }
 
@@ -55,6 +58,7 @@ class CartContainer extends Component {
 
         //generate data
         let data = {
+            uuid: uuid(),
             customer: this.props.customer,
             orderId: this.props.newOrderId,
             paymentStatus: this.props.paymentStatus,
@@ -70,6 +74,7 @@ class CartContainer extends Component {
         console.log(data);
         
         //send data to firebase
+        this.props.submitOrder(data);
 
         //close Modal
         this.handleCloseModal();
@@ -87,7 +92,16 @@ class CartContainer extends Component {
         })
     }
 
+    // componentDidMount() {
+    //     console.log("Begin to fetch");
+    //     this.props.fetchAllOrders();
+    // }
+
     render() {
+        if (this.props.orders) {
+            console.log("Orders retrieved.");
+            console.log(this.props.orders);
+        }
         let ui = (
             <React.Fragment>
                 {/* Header box */}
@@ -171,6 +185,7 @@ const mapStateToProps = state => {
         paymentMethod: state.order.paymentMethod,
         customer: state.order.customer,
         newOrderId: state.order.newOrderId,
+        orders: state.order.orders,
     };
 }
 
@@ -180,7 +195,8 @@ const mapDispatchToProps = dispatch => {
         removeItemFromOrder: (item) => dispatch(actions.processRemoveFromOrder(item)),
         generateOrderNumber: () => dispatch(actions.generateOrderId()),
         saveCustomerInfo: (customer) => dispatch(actions.processSaveCustomerInfo(customer)),
-        
+        fetchAllOrders: () => dispatch(actions.processFetchAllOrder()),
+        submitOrder: (order) => dispatch(actions.submitOrder(order)),
     };
 };
 
