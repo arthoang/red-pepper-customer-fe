@@ -1,16 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto';
-  font-size: smaller;
+  font-family: "Oswald", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #999;
+  line-height: 1.9em;
   height: 100%;
   background-color: black;
 }
 
-h1 {
-  color: #363D57;
-  font-size: medium;
-}
+/* heading */
+  /* ------------------------------ */
+  h1, h2, h3, h4, h5, h6 {
+    color: #222;
+    font-family: 'Oswald',Arial, Helvetica, sans-serif;
+    font-weight:normal;
+    }
+    
+    h1 {
+    font-size:32px;
+    margin:0;
+    text-align:center;
+    font-weight:300;
+    }
+    
+    h1.big{
+    color:#fff;
+    margin:0;
+    line-height:1.6em;  
+    display:inline-block;
+    }
+    h1.big.ls {
+      font-family: "Oswald";
+      letter-spacing: 20px;
+      text-transform: uppercase;
+      font-size: 60px;
+      color: #fff;
+      margin: 0;
+      line-height: 1.6em;
+    }
+    h1.under-color{
+      font-weight:bold;
+      border-bottom:solid 2px;
+      letter-spacing: 0;
+      font-family:"Montserrat";
+      font-size:40px;
+    }
+    h1.big b{
+      font-weight: 300;
+    }
+    h1 .small-border{
+      margin-top:30px;
+    }
+    
+    h2 {
+    font-size:28px;
+    display:block;
+    margin-top:0;
+    margin-bottom:30px;
+    line-height:1.2em;
+    letter-spacing:-1px;
+    }
+    h2 .small-border{
+    margin-bottom:15px;
+    width:60px;
+    height:2px;
+    }
+    
+    h3 {
+    margin-top: 0;
+    font-size:17px;
+    font-weight:bold;
+    }
+    .call-to-action h3{
+    text-transform:none;
+    font-size:20px;
+    }
+    h1.slogan_big {
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 64px;
+    letter-spacing: -2px;
+    padding: 0;
+    margin: 0px 0 30px 0;
+    }
+    h1.title{
+    font-size:64px;
+    letter-spacing:10px;
+    }
+    h1.title strong{
+    font-family:"Allura";
+    text-transform:none;
+    letter-spacing:0;
+    font-weight:normal;
+    }
+    h2.subtitle{
+    margin-top:0;
+    }
+    .de_light .text-light h2{
+    color:#fff;
+    }
+    h3.title {
+    border-bottom: solid 1px #ddd;
+    margin-bottom: 20px;
+    }
+    h4.title {
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    }
+    h5 {
+    font-weight: bold;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5{
+    color:#eceff3;
+    }
+    h1 a,
+    h2 a,
+    h3 a,
+    h4 a,
+    h5 a{
+    text-decoration:none !important;
+    }
+    
+    h4{
+    text-transform:none;
+    }
+    
+    span.teaser{
+    font-family:"Georgia";
+    font-style:italic;
+    font-size:18px;
+    }
+    
+    .text-light,.text-light span{
+    color:#fff;
+    }
+    
+    .text-light h1, .text-light h2, .text-light h3, .text-light h4, .text-light h5, .text-light h6{
+    color:#fff !important;
+    }
+    
+    .text-light h1 a, .text-light h2 a, .text-light h3 a, .text-light h4 a, .text-light h5 a, .text-light h6 a{
+    color:#fff !important;
+    }
+    
+    .de_light h1,.de_light h2,.de_light h3,.de_light h4,.de_light h5,.de_light h6{
+    color:#1a2530;
+    }
 
 
 

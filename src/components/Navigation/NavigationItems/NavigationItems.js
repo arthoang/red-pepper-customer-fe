@@ -39,8 +39,10 @@ class NavigationItems extends Component {
     
         return (
             <ul className={classes.NavigationItems}>
+                <NavigationItem link="/home" >HOME</NavigationItem>
                 <NavigationItem link="/menu" >MENU</NavigationItem>
                 <NavigationItem link="/contact" >CONTACT</NavigationItem>
+                <NavigationItem link="/gallery" >GALLERY</NavigationItem>
                 <NavigationItem link="/order" >ORDER</NavigationItem>
                 {cart}
                 {/* {props.isAuthenticated ? 

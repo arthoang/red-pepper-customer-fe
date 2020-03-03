@@ -4,6 +4,9 @@ import { Switch, Route, withRouter  } from 'react-router-dom';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import Menu from './containers/Menu/MenuContainer';
+import Contact from './containers/Contact/ContactContainer';
+import Gallery from './containers/Gallery/GalleryContainer';
+import Home from './containers/Home/HomeContainer';
 
 import { connect } from 'react-redux';
 // import Button from './components/UI/Button/Button';
@@ -22,7 +25,10 @@ class App extends Component {
             <Switch>
               <Route path='/login' component={Auth} />
               <Route path='/logout' component={Logout} />
+              <Route path='/home' component={Home} />
               <Route path='/menu' component={Menu} />
+              <Route path='/contact' component={Contact} />
+              <Route path='/gallery' component={Gallery} />
 
               
             </Switch>
