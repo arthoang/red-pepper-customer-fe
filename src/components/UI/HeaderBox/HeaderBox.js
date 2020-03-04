@@ -2,6 +2,7 @@ import React from 'react';
 import MenuImg from '../../../assets/images/menu.jpg';
 import ContactImg from '../../../assets/images/contact.png';
 import GalleryImg from '../../../assets/images/gallery.jpg';
+import CartImg from '../../../assets/images/cart.jpg';
 import classes from './HeaderBox.module.css';
 
 const HeaderBox  = (props) => {
@@ -10,6 +11,8 @@ const HeaderBox  = (props) => {
         bgImg=MenuImg;
     } else if (props.link==="contact") {
         bgImg=ContactImg;
+    } else if (props.link==="cart") {
+        bgImg=CartImg;
     }
       else if (props.link==="gallery") {
         bgImg=GalleryImg;

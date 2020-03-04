@@ -6,7 +6,9 @@ import Logout from './containers/Auth/Logout/Logout';
 import Menu from './containers/Menu/MenuContainer';
 import Contact from './containers/Contact/ContactContainer';
 import Gallery from './containers/Gallery/GalleryContainer';
-import Home from './containers/Home/HomeContainer';
+// import Home from './containers/Home/HomeContainer';
+import Cart from './containers/Cart/CartContainer';
+import * as ROUTES from './constants/routes';
 
 import { connect } from 'react-redux';
 // import Button from './components/UI/Button/Button';
@@ -23,13 +25,12 @@ class App extends Component {
         
           <Layout>
             <Switch>
-              <Route path='/login' component={Auth} />
-              <Route path='/logout' component={Logout} />
-              <Route path='/home' component={Home} />
-              <Route path='/menu' component={Menu} />
-              <Route path='/contact' component={Contact} />
-              <Route path='/gallery' component={Gallery} />
-
+              <Route path={ROUTES.SIGN_IN} component={Auth} />
+              <Route path={ROUTES.SIGN_OUT} component={Logout} />
+              <Route path={ROUTES.MENU} component={Menu} />
+              <Route path={ROUTES.CART} component={Cart} />
+              <Route path={ROUTES.CONTACT} component={Contact} />
+              <Route path={ROUTES.GALLERY} component={Gallery} />
               
             </Switch>
             

@@ -1,0 +1,31 @@
+.ItemControls {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NumberPicker {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    display: flex;
+    overflow: hidden;
+    width: 15%;
+    justify-content: space-between;
+}
+
+.Text {
+    text-align: left;
+    color: #28963C;
+}
+
+.Quantity {
+    text-align: center;
+    color: #d40000;
+}
+
+.Number {
+    text-align: right;
+    color: #d40000;
+}

@@ -1,0 +1,11 @@
+.Modal {
+    position: relative;
+    width: 40%;
+}
+
+.ModalTitle {
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: medium;
+    color: #d40000;
+}

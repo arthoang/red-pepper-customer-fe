@@ -16,14 +16,23 @@ import thunk from 'redux-thunk';
 
 //reducer
 import orderReducer from './store/reducers/OrderReducer';
+import menuReducer from './store/reducers/MenuReducer';
 import authReducer from './store/reducers/AuthReducer';
+
+
+
+
+// firebase.initializeApp(firebaseConfig);
+
+// export const AuthContext = React.createContext(null);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers(
   {
     order: orderReducer,
-    auth: authReducer
+    menu: menuReducer,
+    auth: authReducer,
   }
 )
 
@@ -36,6 +45,14 @@ const app = (
     </BrowserRouter>
   </Provider>
 );
+
+// const app = (
+//   <FirebaseContext.Provider value={new Firebase()} store={store}>
+//     <BrowserRouter>
+//       <App />
+//     </BrowserRouter>
+//   </FirebaseContext.Provider>
+// );
 
 ReactDOM.render(app, document.getElementById('root'));
 

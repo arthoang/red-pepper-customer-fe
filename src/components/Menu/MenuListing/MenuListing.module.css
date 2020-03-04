@@ -3,3 +3,11 @@
     text-align: left;
     color: #fff;
 }
+
+.SectionHeading {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: large;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,42 @@
+.CartTotal {
+    margin-top: 10px;
+    width: 70%;
+    text-align: left;
+    color: #fff;
+    background-color: #fcfcfc;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+    letter-spacing: 0.2em;
+}
+
+.CartTotalRow {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CartTotalLabel {
+    text-align: left;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: small;
+    color: #28963C;
+    flex: 1 1 auto;
+}
+
+.CartTotalNumber {
+    text-align: right;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: small;
+    color: #d40000;
+    flex: 1 1 auto;
+}

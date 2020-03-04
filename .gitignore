@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 node_modules
+=======
+node_modules/
+node_modules/eslint-config-react-app/package.json
+.env
+>>>>>>> 4ff673fd681a7f79ba373073f02043b8648f80ac
