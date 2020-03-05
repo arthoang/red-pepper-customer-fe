@@ -3,6 +3,8 @@ import Button from '../UI/Button/Button';
 import { useFormik } from 'formik';
 import BSForm from 'react-bootstrap/Form';
 
+
+
 const Form = (props) => {
     const formElementsArray = [];
     for (let key in props.formElements) {
@@ -55,14 +57,29 @@ const Form = (props) => {
                             {formik.errors[el.id]}
                         </BSForm.Control.Feedback>
                     );
-                }
-                if (el.config.elementType==='check') {
+                } else if (el.config.elementType==='check') {
                     
                     formControl = (
                         <BSForm.Check
                             feedback={formik.errors[el.id]}
                         >
                         </BSForm.Check>
+                    )
+                } else if (el.config.elementType==='select') {
+                    
+                    formControl = (
+                        <BSForm.Control 
+                            as={el.config.elementType}
+                            onChange={formik.handleChange}
+                            isInvalid={formik.touched[el.id] && formik.errors[el.id]}
+                        >
+                            {el.config.options.map(option => {
+                                return (
+                                    <option key={option.value} value={option.value}>{option.label}</option>
+                                )
+                            })}
+                        </BSForm.Control>
+                        
                     )
                 }
                 return (

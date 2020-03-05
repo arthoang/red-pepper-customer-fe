@@ -26,7 +26,7 @@ const addToOrder = (state, action) => {
     let existingItems = [];
     for (let i = 0; i < newCurrentOrderItems.length; i++) {
         let item = newCurrentOrderItems[i];
-        if (item.dishId ===newItem.dishId && item.notes === newItem.notes) {
+        if (item.uuid ===newItem.uuid && item.notes === newItem.notes) {
             existingItems.push(i);
         }
     }
@@ -52,7 +52,7 @@ const removeFromOrder = (state, action) => {
     for (let i = 0; i < newCurrentOrderItems.length; i++) {
         let item = newCurrentOrderItems[i];
         
-        if (item.dishId ===newItem.dishId && item.notes === newItem.notes) {
+        if (item.uuid ===newItem.uuid && item.notes === newItem.notes) {
             newCurrentOrderItems.splice(i, 1);
             break;
         }

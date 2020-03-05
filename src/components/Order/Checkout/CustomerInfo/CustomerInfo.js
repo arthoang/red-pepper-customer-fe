@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './CustomerInfo.module.css';
 import Form from '../../../Form/Form';
 import * as yup from 'yup';
+import { orderTypes } from '../../../../constants/statuses';
 
 class CustomerInfo extends Component {
     state = {
@@ -61,8 +62,9 @@ class CustomerInfo extends Component {
                 placeholder: 'XXX XXX',
             },
             orderType: {
-                elementLabel: 'How do you want to receive the order?',
+                elementLabel: 'Order Type',
                 elementType: 'select',
+                options: [{value: 0, label: 'Dine in'}, {value: 1, label: 'Pick Up'}, {value: 2, label: 'Delivery'}],
             }
         },
         initialValues: {

@@ -9,9 +9,9 @@ const CartItem = (props) => {
     return (
         <div className={classes.CartItem}>
             <Media >
-                <img className={classes.Image} src={props.item.image} alt={props.item.dish}/>
+                <img className={classes.Image} src={props.item.image} alt={props.item.name}/>
                 <Media.Body>
-                    <div className={classes.Title}>{props.item.dish}</div>
+                    <div className={classes.Title}>{props.item.name}</div>
                     <ItemInfo
                         item={props.item}
                         removeAll={props.removeAll}

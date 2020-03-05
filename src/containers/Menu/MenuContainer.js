@@ -41,6 +41,7 @@ class MenuContainer extends Component {
 
     processAddToOrder = (values) => {
         let item = {...this.state.selectedDish};
+        
         for (let key in values) {
             item[key] = values[key];
         }
