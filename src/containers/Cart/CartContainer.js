@@ -37,15 +37,12 @@ class CartContainer extends Component {
         this.props.removeItemFromOrder(item);
     }
 
-    handlePlaceOrder = () => {
-        console.log("Handle place order!");
-        
+    handlePlaceOrder = () => {        
         this.handleShowModal();
     }
 
     handleCheckout = (values) => {
-        console.log("Checkout!");
-        console.log(values);
+
         //save customer
         let customer = {};
         for(let key in values) {
@@ -63,11 +60,14 @@ class CartContainer extends Component {
             orderId: this.props.newOrderId,
             paymentStatus: this.props.paymentStatus,
             paymentMethod: this.props.paymentMethod,
+            orderStatus: 'Pending',
+            orderType: 'Pickup',
             items: this.props.currentOrderItems,
             gst: this.props.currentOrderGST,
             pst: this.props.currentOrderPST,
             subTotal: this.props.currentOrderSubTotal,
             total: this.props.currentOrderTotal,
+            createdAt: Date.now(),
         };
 
         console.log("Data to send:");
@@ -161,7 +161,7 @@ class CartContainer extends Component {
                         <CustomerInfo 
                             btnType="ButtonFormSmall"
                             btnAction={this.handleCheckout}
-                            btnLabel="Add to order"
+                            btnLabel="Place order"
                         />
                     </BSModal>
                     

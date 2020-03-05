@@ -16,121 +16,10 @@ class MenuContainer extends Component {
         showModal: false,
         selectedDish: {},
         category: null,
-        categories: {
+        menuControlBtn: {
             btnType: "ButtonMenu",
             activeBtnType: "ButtonMenuActive",
-            items: null,
         },
-        menu: null,
-
-        // menu: {
-        //     '1eb45a0e-4938-4495-94e1-f5639239c8f1': [
-        //         {
-        //             dishId: 1,
-        //             dish: "Chicken Soup",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/1-4.jpg",
-        //             price: 8,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 2,
-        //             dish: "Caprese Salad",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/2-3.jpg",
-        //             price: 7.5,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 3,
-        //             dish: "Polpette",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/3-3.jpg",
-        //             price: 7,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 4,
-        //             dish: "Caprino",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/5-1.jpg",
-        //             price: 8.75,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 5,
-        //             dish: "Calamary",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/6-1.jpg",
-        //             price: 11,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //     ],
-        //     mains: [
-        //         {
-        //             dishId: 6,
-        //             dish: "Chicken Soup",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/1-4.jpg",
-        //             price: 8,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 7,
-        //             dish: "Caprese Salad",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/2-3.jpg",
-        //             price: 7.5,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 8,
-        //             dish: "Polpette",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/3-3.jpg",
-        //             price: 7,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 9,
-        //             dish: "Caprino",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/5-1.jpg",
-        //             price: 8.75,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //     ],
-        //     beverages: [
-        //         {
-        //             dishId: 10,
-        //             dish: "Chicken Soup",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/1-4.jpg",
-        //             price: 8,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 11,
-        //             dish: "Caprese Salad",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/2-3.jpg",
-        //             price: 7.5,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 12,
-        //             dish: "Polpette",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/3-3.jpg",
-        //             price: 7,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //     ],
-        //     liquor: [
-        //         {
-        //             dishId: 13,
-        //             dish: "Chicken Soup",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/1-4.jpg",
-        //             price: 8,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //         {
-        //             dishId: 14,
-        //             dish: "Caprese Salad",
-        //             image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/2-3.jpg",
-        //             price: 7.5,
-        //             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
-        //         },
-        //     ],
-        // }
     }
 
     handleShowModal = () => {
@@ -160,150 +49,53 @@ class MenuContainer extends Component {
         this.handleCloseModal();
     }
 
+    updateActiveCatToDefault = () => {
+        let updatedState = {};
+        const defaultCategoryName = 'APPETIZERS';
+        let activeCategory = null;
+        this.props.categories.forEach(category => {
+            if (category.name===defaultCategoryName) {
+                activeCategory = category.uuid;
+            }
+        });
+        updatedState['category'] = activeCategory;
+        this.setState(updatedState);
+    }
+
     componentDidMount = () => {
-        if (!this.state.categories.items) {
-            //fetch main categories
-            this.props.fetchCategories();
-        }
-        if (!this.state.subCategories) {
-            //fetch sub categories
-            this.props.fetchSubCategories();
-        }
-        if (!this.state.menu) {
-            // fetch menu
+        if (!this.props.menu) {
+            // fetch menu if it is null
             this.props.fetchMenu();
+        } else {
+            //update active cat with default category
+            this.updateActiveCatToDefault();
         }
     }
 
+
     componentDidUpdate = (prevProps, prevState) => {
-        let updatedState = {};
-        if (this.props.categories) {
-            if (!prevProps.categories) {
-                const defaultCategoryName = 'APPETIZERS';
-                let activeCategory = null;
-                this.props.categories.forEach(category => {
-                    if (category.name===defaultCategoryName) {
-                        activeCategory = category.uuid;
-                    }
-                });
-                updatedState['category'] = activeCategory;
-                updatedState['categories'] = {
-                    ...this.state.categories,
-                    items: this.props.categories,
-                }
-                this.setState(updatedState);
-                // this.setState({
-                //     category: activeCategory,
-                //     categories: {
-                //         ...this.state.categories,
-                //         items: this.props.categories
-                //     }
-                // });
-            }
-        }
-
-        if (this.props.menu && this.props.subCategories && this.props.categories
-            && (!prevProps.categories || !prevProps.subCategories || !prevProps.menu)
-            ) {
-                // menu: {    
-                //     mainCatUid : {
-                //         hasSubcat: true
-                //         items: {
-                //              subCatUid: [{}]
-                //          }
-                //         
-                //     }
-                // }
-                // OR
-                // menu: {    
-                //     mainCatUid : {
-                //         hasSubcat: false
-                //         items: [{}]
-                //     }
-                // }
-            let menu = {};
-            
-            this.props.categories.forEach(cat => {
-                //get items for each cat
-                let mainCatObj = {};
-
-                //this is array of dishes that have this main cat uuid
-                let menuCatItems = this.props.menu.filter(item => {
-                    return item.mainCatUuid === cat.uuid;
-                })
-
-                let hasSubcat = false;
-                //check if this cat has subcat
-                const nullSubCatItems = menuCatItems.filter(item => {
-                    return ((!item.categoryUuid) || (item.categoryUuid && item.categoryUuid.length === 0));
-                })
-                // if exist, this cat has no subcat
-                if (nullSubCatItems.length > 0) {
-                    hasSubcat = false
-                } else {
-                    hasSubcat = true
-                }
-                // update the main cat object to reflect this property
-                mainCatObj['hasSubcat'] = hasSubcat;
-
-                // construct object based on hasSubcat
-                
-                if (hasSubcat) {
-                    // if this cat has subcat, iterate into another layer
-                    mainCatObj['items'] = {}
-                    this.props.subCategories.forEach(subCat => {
-
-                        //get items that has this subcat
-                        const subCatItems = menuCatItems.filter(item => {
-                            return item.categoryUuid === subCat.uuid;
-                        });
-                        if (subCatItems.length > 0) {
-                            //update the mainCatObj: key = this subCat uuid, value = array of dishes that have the subCat uuid
-                            mainCatObj['items'][subCat.uuid] = subCatItems
-                        }
-                    });
-                } else {
-                    // if this cat has no subcat, update mainCatObj
-                    // key = items
-                    // value = array of dishes that have the cat uuid
-                    mainCatObj['items'] = menuCatItems;
-                }
-                // add mainCatObj to menu
-                menu[cat.uuid] = mainCatObj;
-            });
-            updatedState['menu'] = menu;
-            this.setState(updatedState);
-        }
-
-        //update state
-        //this.setState(updatedState);
         
+        if (this.props.categories && prevState.category === null) {        
+            this.updateActiveCatToDefault();
+        }
     }
 
     render() {
         let menuUi = <Spinner />
-        if (this.props.menu) {
-            
-        }
-        if (this.state.menu) {
-            
-        }
-
-
-        if (!this.props.fetchCatLoading && !this.props.fetchSubCatLoading && !this.props.fetchMenuLoading
-            && this.state.categories.items && this.props.subCategories && this.state.menu) {
+        if (!this.props.fetchMenuLoading && this.props.menu && this.state.category) {
             menuUi = (
                 <React.Fragment>
                     {/* Menu Controls */}
                     <MenuControls 
                         categorySelected={this.handleCategoryChanged} 
-                        categories={this.state.categories}
+                        categories={this.props.categories}
+                        btnStyles = {this.state.menuControlBtn}
                         activeCategory={this.state.category}
                         />
 
                     {/* Menu Listing */}
                     <MenuListing 
-                        menu={this.state.menu[this.state.category]}
+                        menu={this.props.menu[this.state.category]}
                         subCategories = {this.props.subCategories}
                         add={this.handleAddToOrder}
                     />
@@ -350,10 +142,6 @@ const mapStateToProps = state => {
         subCategories: state.menu.subCategories,
         menu: state.menu.menu,
         // UI and errors
-        fetchCatLoading: state.menu.fetchCatLoading,
-        fetchCatError: state.menu.fetchCatError,
-        fetchSubCatLoading: state.menu.fetchSubCatLoading,
-        fetchSubCatError: state.menu.fetchSubCatError,
         fetchMenuLoading: state.menu.fetchMenuLoading,
         fetchMenuError: state.menu.fetchMenuError,
     };
@@ -362,8 +150,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addItemToOrder: (item) => dispatch(actions.processAddToOrder(item)),
-        fetchCategories: () => dispatch(actions.fetchMainCategories()),
-        fetchSubCategories: () => dispatch(actions.fetchSubCategories()),
         fetchMenu: () => dispatch(actions.fetchMenu()),
     };
 };

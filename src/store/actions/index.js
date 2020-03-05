@@ -8,8 +8,6 @@ export {
 } from './order';
 
 export {
-    fetchMainCategories,
-    fetchSubCategories,
     fetchMenu,
 } from './menu';
 

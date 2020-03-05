@@ -60,6 +60,8 @@ class MenuListing extends Component {
                     {
                         row.map((col, cidx) => {
                             if (Object.keys(col).length !== 0) {
+                                // console.log(col.uuid);
+                                // console.log(col.name);
                                 // valid column
                                 return (
                                     <Col lg={true} key={col.uuid}>
@@ -91,7 +93,6 @@ class MenuListing extends Component {
         
         //split array into pair of row each
         let rows = [];
-        let cols = [];
         let menu = [];
         // for those that has sub category
         if (this.props.menu.hasSubcat) {

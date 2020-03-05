@@ -17,10 +17,10 @@ class MenuControls extends Component {
         //         </Button>
         //     );
         // });
-        const controls = this.props.categories.items.map(cat => {
-            let btnType = this.props.categories.btnType
+        const controls = this.props.categories.map(cat => {
+            let btnType = this.props.btnStyles.btnType
             if(cat.uuid === this.props.activeCategory) {
-                btnType = this.props.categories.activeBtnType
+                btnType = this.props.btnStyles.activeBtnType
             }
             return (
                 <Button key={cat.uuid}

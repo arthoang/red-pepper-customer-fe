@@ -59,6 +59,10 @@ class CustomerInfo extends Component {
                 elementType: 'input',
                 inputType: 'text',
                 placeholder: 'XXX XXX',
+            },
+            orderType: {
+                elementLabel: 'How do you want to receive the order?',
+                elementType: 'select',
             }
         },
         initialValues: {
