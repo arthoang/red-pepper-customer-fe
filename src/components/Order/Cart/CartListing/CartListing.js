@@ -5,7 +5,7 @@ import CartItem from '../CartItem/CartItem';
 
 class CartListing extends Component {
     render() {
-//         dishId: 6
+//         uuid: 6
 // dish: "Chicken Soup"
 // image: "http://nhit.sg-host.com/wp-content/uploads/2017/03/1-4.jpg"
 // price: 8
@@ -19,7 +19,7 @@ class CartListing extends Component {
             listing = this.props.items.map((item, idx) => {
                 if (idx < arrLen - 1) {
                     return (
-                        <React.Fragment key={""+item.dishId+""+idx} >
+                        <React.Fragment key={""+item.uuid+""+idx} >
                             <CartItem 
                                 removeOne={this.props.removeOne}
                                 addOne={this.props.addOne}
@@ -32,9 +32,9 @@ class CartListing extends Component {
                     );
                 } else {
                     return (
-                        <React.Fragment key={""+item.dishId+""+idx}>
+                        <React.Fragment key={""+item.uuid+""+idx}>
                             <CartItem 
-                                key={item.dishId} 
+                                key={item.uuid} 
                                 removeOne={this.props.removeOne}
                                 addOne={this.props.addOne}
                                 removeAll={this.props.removeAll}
