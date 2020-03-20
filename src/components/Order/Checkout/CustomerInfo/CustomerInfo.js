@@ -70,6 +70,7 @@ class CustomerInfo extends Component {
         initialValues: {
             city: "Saskatoon",
             province: "SK",
+            orderType: 0,
         },
         validationSchema: yup.object({
         })

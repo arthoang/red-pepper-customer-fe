@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import firebase from '../../components/Firebase/Firebase';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import classes from './Auth.module.css';
@@ -46,6 +47,18 @@ class Auth extends Component {
             }, 
         },
     };
+
+    uiConfig = {
+        // Popup signin flow rather than redirect flow.
+        signInFlow: 'popup',
+        // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+        signInSuccessUrl: '/menu',
+        // We will display Google and Facebook as auth providers.
+        signInOptions: [
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID
+        ]
+      };
 
     componentDidMount() {
         // if (!this.props.building && this.props.authRedirectPath!=='/') {
@@ -100,56 +113,67 @@ class Auth extends Component {
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
     }
 
+    authUser = () => {
+        let user = null;
+        firebase.auth().getRedirectResult().then(result => {
+            console.log(result);
+            user = result.user;
+            console.log(user);
+        })
+    }
+
     render() {
-        const formElementsArray = [];
-        for (let key in this.state.controls) {
-            formElementsArray.push({
-                id: key,
-                config: this.state.controls[key]
-            })
-        }
+        // const formElementsArray = [];
+        // for (let key in this.state.controls) {
+        //     formElementsArray.push({
+        //         id: key,
+        //         config: this.state.controls[key]
+        //     })
+        // }
 
-        const form = formElementsArray.map(el => (
-            <Input key={el.id}
-                    elementLabel={el.config.elementLabel}
-                    elementType={el.config.elementType} 
-                    elementConfig={el.config.elementConfig}
-                    value={el.config.value}
-                    invalid={!el.config.valid}
-                    shouldValidate = {el.config.validation}
-                    touched = {el.config.touched}
-                    changed={(event) => this.inputChangedHandler(event, el.id)} 
-            />
-        ));
+        // const form = formElementsArray.map(el => (
+        //     <Input key={el.id}
+        //             elementLabel={el.config.elementLabel}
+        //             elementType={el.config.elementType} 
+        //             elementConfig={el.config.elementConfig}
+        //             value={el.config.value}
+        //             invalid={!el.config.valid}
+        //             shouldValidate = {el.config.validation}
+        //             touched = {el.config.touched}
+        //             changed={(event) => this.inputChangedHandler(event, el.id)} 
+        //     />
+        // ));
         
-        let authUI = <Spinner />
-        if (!this.props.loading) {
-            authUI = <div>
-                <form onSubmit={this.submitHandler}>
-                    <h1>Please login with your username or email address: </h1>
-                    {form}
-                    <Button btnType="ButtonBlue">Submit</Button>                    
-                </form>
-            </div>
-        }
+        // let authUI = <Spinner />
+        // if (!this.props.loading) {
+        //     authUI = <div>
+        //         <form onSubmit={this.submitHandler}>
+        //             <h1>Please login with your username or email address: </h1>
+        //             {form}
+        //             <Button btnType="ButtonBlue">Submit</Button>                    
+        //         </form>
+        //     </div>
+        // }
 
-        let errorMsg = null;        
-        if (this.props.error) {
-            errorMsg = <p className={classes.error}>{this.props.error.data.detail}</p>;
-        }
+        // let errorMsg = null;        
+        // if (this.props.error) {
+        //     errorMsg = <p className={classes.error}>{this.props.error.data.detail}</p>;
+        // }
 
-        let authRedirect = null;
-        if (this.props.isAuthenticated) {
-            authRedirect = <Redirect to={this.props.authRedirectPath} />
-        };
+        // let authRedirect = null;
+        // if (this.props.isAuthenticated) {
+        //     authRedirect = <Redirect to={this.props.authRedirectPath} />
+        // };
 
-        return (
-            <div className={classes.Auth}>
-                {authRedirect}
-                {errorMsg}
-                {authUI}
-            </div>
-        );
+        // return (
+        //     <div className={classes.Auth}>
+        //         {authRedirect}
+        //         {errorMsg}
+        //         {authUI}
+        //     </div>
+        // );
+        return <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={this.authUser()}/>
+            
     }
 }
 

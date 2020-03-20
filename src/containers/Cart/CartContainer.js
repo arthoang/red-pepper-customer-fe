@@ -44,10 +44,18 @@ class CartContainer extends Component {
     handleCheckout = (values) => {
 
         //save customer
-        let customer = {};
-        for(let key in values) {
-            customer[key] = values[key];
-        }
+        let customer = {
+            firstName: values['firstName'],
+            lastName: values['lastName'],
+            email: values['email'],
+            phone: values['phone'],
+            address1: values['address1'],
+            address2: (values['address2'] ? values['address2'] : ""),
+            city: values['city'],
+            province: values['province'],
+            postalCode: values['postalCode'],
+        };
+        
         this.props.saveCustomerInfo(customer);
 
         //generate order id
@@ -58,20 +66,22 @@ class CartContainer extends Component {
             uuid: uuid(),
             customer: this.props.customer,
             orderId: this.props.newOrderId,
-            paymentStatus: this.props.paymentStatus,
-            paymentMethod: this.props.paymentMethod,
-            orderStatus: 'Pending',
-            orderType: 'Pickup',
             items: this.props.currentOrderItems,
+            paymentMethod: this.props.paymentMethod,
+            paymentStatus: this.props.paymentStatus,
+            orderStatus: 0,
+            orderType: parseInt(values['orderType']),
             gst: this.props.currentOrderGST,
             pst: this.props.currentOrderPST,
             subTotal: this.props.currentOrderSubTotal,
             total: this.props.currentOrderTotal,
             createdAt: Date.now(),
-        };
 
-        console.log("Data to send:");
-        console.log(data);
+        };
+        
+
+        // console.log("Data to send:");
+        // console.log(data);
         
         //send data to firebase
         this.props.submitOrder(data);
